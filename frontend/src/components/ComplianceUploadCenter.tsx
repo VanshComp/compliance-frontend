@@ -135,7 +135,7 @@ const ComplianceUploadCenter = ({ onBack, userName }: ComplianceUploadCenterProp
     formData.append('file', logoFile);
     try {
       const API_URL = process.env.NEXT_PUBLIC_API_URL;
-      const res = await fetch(`${API_URL}/check-logo`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/check-logo`, {
         method: 'POST',
         body: formData,
       });
@@ -163,13 +163,23 @@ const ComplianceUploadCenter = ({ onBack, userName }: ComplianceUploadCenterProp
       formData.append('text', campaignContent);
     }
     try {
-      const API_URL = process.env.NEXT_PUBLIC_API_URL;
-      const res = await fetch(`${API_URL}/check-text`, {
-        method: 'POST',
-        body: formData,
-      });
-      if (!res.ok) throw new Error(`API error: ${res.statusText}`);
-      const data = await res.json();
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+  console.log("API URL:", API_URL); // Debugging line
+
+  const res = await fetch(`${API_URL}/check-text`, {
+    method: 'POST',
+    body: formData,
+  });
+
+  if (!res.ok) {
+    throw new Error(`Error: ${res.status}`);
+  }
+
+  const data = await res.json();
+  console.log(data);
+} catch (err) {
+  console.error("API request failed:", err);
+}
       setTextResult(data);
       toast({ title: "Text Analysis Complete", description: `Overall: ${data.overall_accuracy}%` });
     } catch (err) {
