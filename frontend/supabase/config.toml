@@ -1,0 +1,13 @@
+project_id = "wbniklysqaxnzgrryjix"
+
+[functions.analyze-compliance]
+verify_jwt = false
+
+[functions.get-analysis-status]
+verify_jwt = false
+
+[functions.upload-guideline]
+verify_jwt = false
+
+[functions.generate-with-gemini]
+verify_jwt = false
