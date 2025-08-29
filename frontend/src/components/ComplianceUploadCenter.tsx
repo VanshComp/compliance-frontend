@@ -164,21 +164,19 @@ const ComplianceUploadCenter = ({ onBack, userName }: ComplianceUploadCenterProp
     }
     try {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
-  console.log("API URL:", API_URL); // Debugging line
-
   const res = await fetch(`${API_URL}/check-text`, {
     method: 'POST',
     body: formData,
   });
 
   if (!res.ok) {
-    throw new Error(`Error: ${res.status}`);
+    throw new Error(`HTTP error! status: ${res.status}`);
   }
 
   const data = await res.json();
-  console.log(data);
-} catch (err) {
-  console.error("API request failed:", err);
+  console.log("Response:", data);
+} catch (error) {
+  console.error("Error fetching /check-text:", error);
 }
       setTextResult(data);
       toast({ title: "Text Analysis Complete", description: `Overall: ${data.overall_accuracy}%` });
