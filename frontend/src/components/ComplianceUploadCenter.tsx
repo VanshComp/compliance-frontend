@@ -178,10 +178,18 @@ const ComplianceUploadCenter = ({ onBack, userName }: ComplianceUploadCenterProp
 } catch (error) {
   console.error("Error fetching /check-text:", error);
 }
-      setTextResult(data);
-      toast({ title: "Text Analysis Complete", description: `Overall: ${data.overall_accuracy}%` });
-    } catch (err) {
-      toast({ title: "Error", description: (err as Error).message, variant: "destructive" });
+    try {
+  setTextResult(data);
+  toast({
+    title: "Text Analysis Complete",
+    description: `Overall: ${data.overall_accuracy}%`,
+  });
+} catch (err) {
+  toast({
+    title: "Error",
+    description: (err as Error).message,
+    variant: "destructive",
+  });
     } finally {
       setLoadingText(false);
     }
