@@ -134,8 +134,8 @@ const ComplianceUploadCenter = ({ onBack, userName }: ComplianceUploadCenterProp
     const formData = new FormData();
     formData.append('file', logoFile);
     try {
-      const API_URL = process.env.NEXT_PUBLIC_API_URL;
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/check-logo`, {
+       const API_URL = import.meta.env.VITE_API_URL;
+      const res = await fetch(`${API_URL}/check-logo`, {
         method: 'POST',
         body: formData,
       });
@@ -163,8 +163,9 @@ const ComplianceUploadCenter = ({ onBack, userName }: ComplianceUploadCenterProp
       formData.append('text', campaignContent);
     }
     try {
-  const API_URL = process.env.NEXT_PUBLIC_API_URL;
-  const res = await fetch(`${API_URL}/check-text`, {
+  const API_URL = import.meta.env.VITE_API_URL;
+
+const res = await fetch(`${API_URL}/check-text`, {
     method: 'POST',
     body: formData,
   });
