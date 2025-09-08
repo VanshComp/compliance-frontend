@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Corporate Design System - Clean, Professional Blue/White/Black */
+
+@layer base {
+  :root {
+    /* Simple Corporate Color Palette */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 9%;
+
+    /* Primary - Corporate Blue */
+    --primary: 214 100% 37%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Light Gray */
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 9%;
+
+    /* Muted - Neutral Gray */
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    /* Accent - Lighter Blue */
+    --accent: 214 95% 93%;
+    --accent-foreground: 214 100% 37%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 96%;
+    --ring: 214 100% 37%;
+
+    --radius: 0.5rem;
+
+    /* Corporate Blue Shades */
+    --corporate-blue: 214 100% 37%;
+    --corporate-blue-light: 214 95% 93%;
+    --corporate-blue-dark: 214 100% 27%;
+    
+    /* Simple Shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 9%;
+    --sidebar-primary: 214 100% 37%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 96%;
+    --sidebar-accent-foreground: 0 0% 9%;
+    --sidebar-border: 0 0% 90%;
+    --sidebar-ring: 214 100% 37%;
+  }
+
+  .dark {
+    /* Dark Theme - Corporate Dark Mode */
+    --background: 0 0% 9%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 214 95% 93%;
+    --primary-foreground: 0 0% 9%;
+
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 214 100% 37%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 15%;
+    --ring: 214 95% 93%;
+
+    --sidebar-background: 0 0% 9%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 214 95% 93%;
+    --sidebar-primary-foreground: 0 0% 9%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 214 95% 93%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  /* Clean Typography */
+  .font-heading {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 600;
+  }
+
+  .font-body {
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  /* Corporate Components */
+  .corporate-card {
+    background-color: white;
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .corporate-card-elevated {
+    background-color: white;
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+  }
+
+  .corporate-button-primary {
+    background-color: hsl(var(--corporate-blue));
+    color: white;
+    border: none;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .corporate-button-primary:hover {
+    background-color: hsl(var(--corporate-blue-dark));
+  }
+
+  .corporate-button-secondary {
+    background-color: white;
+    color: hsl(var(--corporate-blue));
+    border: 1px solid hsl(var(--corporate-blue));
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .corporate-button-secondary:hover {
+    background-color: hsl(var(--corporate-blue-light));
+  }
+
+  /* Simple Hover Effects */
+  .corporate-hover {
+    transition: all 0.2s ease-in-out;
+  }
+
+  .corporate-hover:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+  }
+
+  /* Status Indicators */
+  .status-success {
+    background-color: #10b981;
+    color: white;
+  }
+  
+  .status-warning {
+    background-color: #f59e0b;
+    color: white;
+  }
+  
+  .status-error {
+    background-color: #ef4444;
+    color: white;
+  }
+  
+  .status-info {
+    background-color: hsl(var(--corporate-blue));
+    color: white;
+  }
+
+  /* Clean Animations */
+  .fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  @keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+}
