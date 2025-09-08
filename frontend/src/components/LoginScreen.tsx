@@ -44,7 +44,8 @@ export default function AuthPage({ onAuthSuccess }) {
     const v = validate(); if (v) { setError(v); return; }
     setLoading(true);
     try {
-      const API_BASE = process.env.REACT_APP_BACKEND_URL || "http://localhost:4000";
+      const API_BASE = import.meta.env.VITE_NODE_API_URL || "http://localhost:4000";
+
 
 const endpoint =
   mode === 'register'

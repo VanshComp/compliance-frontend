@@ -48,7 +48,7 @@ const ComplianceUploadCenter = ({ onBack, userName }: ComplianceUploadCenterProp
   const textInputRef = useRef<HTMLInputElement>(null);
 
   const { toast } = useToast();
- const API_URL = process.env.REACT_APP_AI_API_URL || "https://your-deta-micro-name.deta.dev";
+ const API_URL = import.meta.env.VITE_AI_API_URL || "http://localhost:5000";
 
   const guidelineOptions = [
     "mutual_fund",
